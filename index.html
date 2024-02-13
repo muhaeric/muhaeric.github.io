@@ -9,6 +9,11 @@
 		<link rel="stylesheet" href="manage-audio.css">
 		<style>
 			p.lead { color: #fff;font-size: 1.5rem; font-weight: 300; text-align: center; }
+			.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 		</style>
 	</head>
 	<body><div id="jquery-script-menu">
@@ -34,7 +39,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 		<h1>Audio Recorder Example</h1>
 		<p class="lead">A jQuery-powered online voice recorder that records voice from the microphone using the MediaRecorder Web API and saves it as a wav file.</p>
 		<div class="audio-record">
-			<button id="recordButton">Start Recording</button>
+			<button class="prevent-select" id="recordButton">Start Recording</button>
 			<button id="stopButton" class="inactive">Stop</button>
 		</div>
 
