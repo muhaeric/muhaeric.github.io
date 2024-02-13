@@ -70,7 +70,7 @@ function startRecording() {
 
 function stopRecording() {
     recorder.stop();
-    audio_stream.getAudioTracks()[0].stop();
+    // audio_stream.getAudioTracks()[0].stop();
     var date = new Date();
     var name = date.getFullYear() +"-"+date.getMonth()+"-"+date.getDate()+"-"+date.getMinutes()+"-"+date.getSeconds()+"-"+date.getMilliseconds();
     var res = name;
