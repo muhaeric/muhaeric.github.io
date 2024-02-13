@@ -68,7 +68,7 @@ function startRecording() {
 function stopRecording() {
     recorder.stop();
     audio_stream.getAudioTracks()[0].stop();
-    downloadAudio.trigger("click");
+    downloadAudio.click();
     // buttons reset
     // recordButton.disabled = false;
     // recordButton.innerText = "Redo Recording"
