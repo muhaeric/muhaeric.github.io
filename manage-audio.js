@@ -48,7 +48,7 @@ function startRecording() {
 
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(function (stream) {
-            audio_stream = stream;
+            // audio_stream = stream;
             recorder = new MediaRecorder(stream);
 
             // when there is data, compile into object for preview src
@@ -70,7 +70,7 @@ function startRecording() {
 
 function stopRecording() {
     recorder.stop();
-    audio_stream.getAudioTracks()[0].stop();
+    // audio_stream.getAudioTracks()[0].stop();
     downloadAudio.click();
     // buttons reset
     // recordButton.disabled = false;
