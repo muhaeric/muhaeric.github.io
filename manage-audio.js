@@ -84,7 +84,7 @@ function stopRecording() {
 
 function downloadRecording(){
     var date = new Date();
-    var name = date.getFullYear() + date.getMonth() + date.getDate() + date.getMinutes() + date.getSeconds();
+    var name = name.getFullYear() +"-"+name.getMonth()+"-"+name.getDate()+"-"+name.getMinutes()+"-"+name.getSeconds()+"-"+name.getMilliseconds();
     var res = name;
     downloadAudio.download = res + '.wav';
 }
