@@ -1,8 +1,8 @@
 // audio recorder
 let recorder, audio_stream;
 const recordButton = document.getElementById("recordButton");
-recordButton.addEventListener("mousedown", startRecording);
-recordButton.addEventListener("mouseup", stopRecording);
+recordButton.addEventListener("touchstart", startRecording);
+recordButton.addEventListener("touchend", stopRecording);
 
 
 // stop recording
