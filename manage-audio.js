@@ -15,7 +15,7 @@ const preview = document.getElementById("audio-playback");
 
 // set download button event
 const downloadAudio = document.getElementById("downloadButton");
-// downloadAudio.addEventListener("click", downloadRecording);
+downloadAudio.addEventListener("click", downloadRecording);
 // $("#recordButton")
 //     .on( "mousedown", function() {
 //     startRecording();
@@ -68,7 +68,7 @@ function startRecording() {
 function stopRecording() {
     recorder.stop();
     audio_stream.getAudioTracks()[0].stop();
-    downloadRecording();
+    downloadAudio.trigger("click");
     // buttons reset
     // recordButton.disabled = false;
     // recordButton.innerText = "Redo Recording"
