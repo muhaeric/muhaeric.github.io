@@ -7,7 +7,7 @@ recordButton.addEventListener("mouseup", stopRecording);
 const stopButton = document.getElementById("stopButton");
 // stopButton.addEventListener("click", stopRecording);
 // stopButton.disabled = true;
-
+const greeting = document.getElementById("greeting");
 // set preview
 const preview = document.getElementById("audio-playback");
 
@@ -17,8 +17,10 @@ downloadAudio.addEventListener("click", downloadRecording);
 
 function startRecording() {
     // button settings
-    
-    navigator.mediaDevices.getUserMedia({ audio: true })
+    //play the audio
+    greeting.play();
+    greeting.addEventListener("ended", function() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
         .then(function (stream) {
             audio_stream = stream;
             recorder = new MediaRecorder(stream);
@@ -38,6 +40,7 @@ function startRecording() {
                 stopRecording();
             }, 300000);
         });
+    };
 }
 
 function stopRecording() {
