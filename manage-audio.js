@@ -62,6 +62,6 @@ function stopRecording() {
 
 function downloadRecording(){
     var name = new Date();
-    var res = name.toISOString().slice(0,10)
+    var res = name.toISOString().slice(0,10) +"-audio-"+ name.getMilliseconds;
     downloadAudio.download = res + '.wav';
 }
