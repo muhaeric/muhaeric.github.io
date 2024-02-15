@@ -48,7 +48,7 @@ function startRecording() {
 
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(function (stream) {
-            // audio_stream = stream;
+            audio_stream = stream;
             recorder = new MediaRecorder(stream);
 
             // when there is data, compile into object for preview src
@@ -59,17 +59,13 @@ function startRecording() {
                 downloadAudio.href = url;
             };
             recorder.start();
-
-            timeout_status = setTimeout(function () {
-                console.log("5 min timeout");
-                stopRecording();
-            }, 300000);
         });
 }
 
 function stopRecording() {
     recorder.stop();
-    // audio_stream.getAudioTracks()[0].stop();
+    audio_stream.getAudioTracks()[0].stop();
+    
     var date = new Date();
     var name = date.getFullYear() +"-"+date.getMonth()+"-"+date.getDate()+"-"+date.getMinutes()+"-"+date.getSeconds()+"-"+date.getMilliseconds();
     var res = name;
