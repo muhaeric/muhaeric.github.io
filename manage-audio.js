@@ -1,12 +1,12 @@
 // audio recorder
 let recorder, audio_stream;
 const recordButton = document.getElementById("recordButton");
-recordButton.addEventListener("click", startRecording);
-
+recordButton.addEventListener("mousedown", startRecording);
+recordButton.addEventListener("mouseup", stopRecording);
 // stop recording
 const stopButton = document.getElementById("stopButton");
-stopButton.addEventListener("click", stopRecording);
-stopButton.disabled = true;
+// stopButton.addEventListener("click", stopRecording);
+// stopButton.disabled = true;
 
 // set preview
 const preview = document.getElementById("audio-playback");
@@ -17,22 +17,7 @@ downloadAudio.addEventListener("click", downloadRecording);
 
 function startRecording() {
     // button settings
-    recordButton.disabled = true;
-    recordButton.innerText = "Recording..."
-    $("#recordButton").addClass("button-animate");
-
-    $("#stopButton").removeClass("inactive");
-    stopButton.disabled = false;
-
-
-    if (!$("#audio-playback").hasClass("hidden")) {
-        $("#audio-playback").addClass("hidden")
-    };
-
-    if (!$("#downloadContainer").hasClass("hidden")) {
-        $("#downloadContainer").addClass("hidden")
-    };
-
+    
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(function (stream) {
             audio_stream = stream;
@@ -58,18 +43,21 @@ function startRecording() {
 function stopRecording() {
     recorder.stop();
     audio_stream.getAudioTracks()[0].stop();
-
+    
     // buttons reset
-    recordButton.disabled = false;
-    recordButton.innerText = "Redo Recording"
-    $("#recordButton").removeClass("button-animate");
+    // recordButton.disabled = false;
+    // recordButton.innerText = "Redo Recording"
+    // $("#recordButton").removeClass("button-animate");
+    
+    // $("#stopButton").addClass("inactive");
+    // stopButton.disabled = true;
+    setTimeout(function () {
+                
+                downloadRecording();
+            }, 1000);
+    // $("#audio-playback").removeClass("hidden");
 
-    $("#stopButton").addClass("inactive");
-    stopButton.disabled = true;
-
-    $("#audio-playback").removeClass("hidden");
-
-    $("#downloadContainer").removeClass("hidden");
+    // $("#downloadContainer").removeClass("hidden");
 }
 
 function downloadRecording(){
