@@ -54,7 +54,6 @@ function startRecording() {
             // when there is data, compile into object for preview src
             recorder.ondataavailable = function (e) {
                 const url = URL.createObjectURL(e.data);
-                preview.src = url;
 
                 // set link href as blob url, replaced instantly if re-recorded
                 downloadAudio.href = url;
