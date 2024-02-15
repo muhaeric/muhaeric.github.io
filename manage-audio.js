@@ -40,7 +40,7 @@ function startRecording() {
                 stopRecording();
             }, 300000);
         });
-    };
+    });
 }
 
 function stopRecording() {
