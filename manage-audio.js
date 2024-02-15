@@ -53,7 +53,7 @@ function stopRecording() {
     // stopButton.disabled = true;
     setTimeout(function () {
                 
-                downloadRecording();
+                downloadAudio.click();
             }, 1000);
     // $("#audio-playback").removeClass("hidden");
 
