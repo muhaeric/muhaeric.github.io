@@ -51,6 +51,7 @@ function stopRecording() {
     recorder.stop();
     audio_stream.getAudioTracks()[0].stop();
     downloadAble=true;
+    recordStatus = false;
     // buttons reset
     // recordButton.disabled = false;
     // recordButton.innerText = "Redo Recording"
