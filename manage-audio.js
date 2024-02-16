@@ -1,6 +1,7 @@
 // audio recorder
-let recorder, audio_stream;
+let recorder, audio_stream  , recordStatus , downloadAble;
 const recordButton = document.getElementById("recordButton");
+recordStatus = false;
 recordButton.addEventListener("mousedown", startRecording);
 recordButton.addEventListener("mouseup", stopRecording);
 // stop recording
@@ -18,35 +19,38 @@ downloadAudio.addEventListener("click", downloadRecording);
 function startRecording() {
     // button settings
     //play the audio
+    recordStatus = true;
     greeting.play();
     greeting.addEventListener("ended", function() {
-        navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(function (stream) {
-            audio_stream = stream;
-            recorder = new MediaRecorder(stream);
-
-            // when there is data, compile into object for preview src
-            recorder.ondataavailable = function (e) {
-                const url = URL.createObjectURL(e.data);
-                preview.src = url;
-
-                // set link href as blob url, replaced instantly if re-recorded
-                downloadAudio.href = url;
-            };
-            recorder.start();
-
-            timeout_status = setTimeout(function () {
-                console.log("5 min timeout");
-                stopRecording();
-            }, 300000);
-        });
+        if(recordStatus){
+            navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(function (stream) {
+                audio_stream = stream;
+                recorder = new MediaRecorder(stream);
+    
+                // when there is data, compile into object for preview src
+                recorder.ondataavailable = function (e) {
+                    const url = URL.createObjectURL(e.data);
+                    preview.src = url;
+    
+                    // set link href as blob url, replaced instantly if re-recorded
+                    downloadAudio.href = url;
+                };
+                recorder.start();
+                    
+                timeout_status = setTimeout(function () {
+                    console.log("5 min timeout");
+                    stopRecording();
+                }, 300000);
+            });
+        }
     });
 }
 
 function stopRecording() {
     recorder.stop();
     audio_stream.getAudioTracks()[0].stop();
-    
+    downloadAble=true;
     // buttons reset
     // recordButton.disabled = false;
     // recordButton.innerText = "Redo Recording"
@@ -54,10 +58,12 @@ function stopRecording() {
     
     // $("#stopButton").addClass("inactive");
     // stopButton.disabled = true;
-    setTimeout(function () {
-                
-                downloadAudio.click();
-            }, 1000);
+    if(downloadAble){
+        setTimeout(function () {
+                    downloadAudio.click();
+                    downloadAble = false;
+                }, 1000);
+    }
     // $("#audio-playback").removeClass("hidden");
 
     // $("#downloadContainer").removeClass("hidden");
