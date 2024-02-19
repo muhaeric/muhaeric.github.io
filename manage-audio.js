@@ -20,7 +20,7 @@ function startRecording() {
     // button settings
     //play the audio
     recordStatus = true;
-    greeting.play();
+    // greeting.play();
     greeting.addEventListener("ended", function() {
         if(recordStatus){
             navigator.mediaDevices.getUserMedia({ audio: true })
