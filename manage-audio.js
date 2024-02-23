@@ -37,11 +37,13 @@ function startRecording() {
                     downloadAudio.href = url;
                 };
                 recorder.start();
-                    
+                   
                 timeout_status = setTimeout(function () {
                     console.log("5 min timeout");
-                    stopRecording();
-                }, 300000);
+                    if(recordStatus){
+                        stopRecording();
+                    }
+                }, 30000);
             });
         }
     });
@@ -72,6 +74,7 @@ function stopRecording() {
 
 function downloadRecording(){
     var name = new Date();
-    var res = name.toISOString().slice(0,10) +"-audio-"+ name.getMilliseconds();
-    downloadAudio.download = res + '.wav';
+    var res = name.toISOString().slice(0,10) +"-audio-"+ name.getSeconds() +"-"+ name.getMilliseconds();
+    var names = "audio-"+btoa (res);
+    downloadAudio.download = names + '.wav';
 }
