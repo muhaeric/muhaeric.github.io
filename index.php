@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 	<html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -27,10 +27,10 @@
 </div>
 </div>
 		<h1>Audio Recorder Example</h1>
-		<p class="lead">A jQuery-powered online voice recorder that records voice from the microphone using the MediaRecorder Web API and saves it as a wav file.</p>
 		<div class="audio-record">
 			<button class="prevent-select" id="recordButton">Start Recording</button>
 			<button id="stopButton" class="inactive">Stop</button>
+			<audio src="greetings/greetings.wav" id="greeting"></audio>
 		</div>
 
 		<div class="playback">
