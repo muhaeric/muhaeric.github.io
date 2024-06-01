@@ -43,7 +43,7 @@ function startRecording() {
                     if(recordStatus){
                         stopRecording();
                     }
-                }, 30000);
+                }, 300000);
             });
         }
     });
